@@ -1,6 +1,3 @@
-//#include "Arduino.h"
-
-#include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
 #include <ArduinoOTA.h>
 #include <map>
@@ -14,21 +11,9 @@ const std::map<ota_error_t, const String> error_messages = {
     {OTA_RECEIVE_ERROR, "Receive Failed"},
     {OTA_END_ERROR, "End Failed"}};
 
-OTA::OTA(const String wifi_ssid, const String wifi_pass) : wifi_ssid(wifi_ssid), wifi_pass(wifi_pass){};
-
 void OTA::setup() const
 {
   Serial.println("Initializing OTA updates...");
-
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(wifi_ssid, wifi_pass);
-
-  while (WiFi.waitForConnectResult() != WL_CONNECTED)
-  {
-    Serial.println("Connection failed! Rebooting...");
-    delay(2000);
-    ESP.restart();
-  }
 
   ArduinoOTA.setPort(8266);
   ArduinoOTA.setHostname("captain-balcon");

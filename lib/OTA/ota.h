@@ -5,13 +5,7 @@
 
 class OTA
 {
-private:
-  const String wifi_ssid;
-  const String wifi_pass;
-
 public:
-  OTA(const String wifi_ssid, const String wifi_pass);
-
   void setup() const;
   void handle() const;
 };

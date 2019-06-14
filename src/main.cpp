@@ -2,8 +2,11 @@
 
 #include "led.h"
 #include "ota.h"
+#include "analog.h"
+#include "wifi.h"
 
-const OTA ota = OTA("<ssid>", "<password>");
+const Wifi wifi = Wifi();
+const OTA ota = OTA();
 const LED led = LED();
 
 const uint BAUD_RATE = 115200;
@@ -11,7 +14,7 @@ const uint BAUD_RATE = 115200;
 void setup()
 {
   Serial.begin(BAUD_RATE);
-
+  wifi.initialize("<ssid>", "<password>");
   led.turnOn();
   ota.setup();
 }
