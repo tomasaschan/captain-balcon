@@ -2,12 +2,15 @@
 
 #include "led.h"
 #include "ota.h"
-#include "analog.h"
+#include "soil-sensor.h"
+#include "clock.h"
 #include "wifi.h"
 
 const Wifi wifi = Wifi();
 const OTA ota = OTA();
 const LED led = LED();
+
+const SoilSensor soil = SoilSensor(300);
 
 const uint BAUD_RATE = 115200;
 
@@ -21,8 +24,11 @@ void setup()
 
 void loop()
 {
+  const Clock clck = Clock();
   ota.handle();
 
   delay(1000);
   led.turnOff();
+
+  Serial.printf("%s: Soil is %s\n", clck.cnow(), soil.isWet() ? "wet" : "dry");
 }
