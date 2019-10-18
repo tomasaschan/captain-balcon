@@ -10,7 +10,7 @@ const Wifi wifi("<ssid>", "<password>");
 const OTA ota;
 const LED led;
 
-const SoilSensor soil = SoilSensor(300);
+const SoilSensor soil(300);
 
 const uint BAUD_RATE = 115200;
 
