@@ -1,14 +1,14 @@
 #include "Arduino.h"
 
+#include "wifi.h"
 #include "led.h"
 #include "ota.h"
 #include "soil-sensor.h"
 #include "clock.h"
-#include "wifi.h"
 
-const Wifi wifi = Wifi();
-const OTA ota = OTA();
-const LED led = LED();
+const Wifi wifi("<ssid>", "<password>");
+const OTA ota;
+const LED led;
 
 const SoilSensor soil = SoilSensor(300);
 
@@ -17,7 +17,7 @@ const uint BAUD_RATE = 115200;
 void setup()
 {
   Serial.begin(BAUD_RATE);
-  wifi.initialize("<ssid>", "<password>");
+  wifi.ensureConnected();
   led.turnOn();
   ota.setup();
 }
