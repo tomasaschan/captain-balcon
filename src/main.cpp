@@ -30,5 +30,6 @@ void loop()
   delay(1000);
   led.turnOff();
 
+  led.set(!soil.isWet());
   Serial.printf("%s: Soil is %s\n", clck.cnow(), soil.isWet() ? "wet" : "dry");
 }

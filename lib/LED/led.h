@@ -9,6 +9,7 @@ public:
   LED();
   void turnOn() const;
   void turnOff() const;
+  void set(bool on) const;
 };
 
 #endif

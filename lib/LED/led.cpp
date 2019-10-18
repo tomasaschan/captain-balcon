@@ -11,3 +11,5 @@ LED::LED()
 void LED::turnOn() const { digitalWrite(LED_BUILTIN, ON); };
 
 void LED::turnOff() const { digitalWrite(LED_BUILTIN, OFF); };
+
+void LED::set(bool on) const { digitalWrite(LED_BUILTIN, on ? ON : OFF); }
